@@ -3,6 +3,7 @@ import { ActionType, getType } from "typesafe-actions";
 import { axiosClient } from "../../config/axios";
 import { AuthService } from "../../services/AuthService";
 import { validatePhone } from "../../utils/validations";
+import { saveState } from "../localStorage";
 import { RootState } from "../reducer";
 import * as actions from "./actions";
 
@@ -55,6 +56,14 @@ function* authorize(action: ActionType<typeof actions.authorizeRequest>) {
   return yield put(actions.authorizeSuccess(data.token));
 }
 
+function saveToken(action: ActionType<typeof actions.authorizeSuccess>) {
+  saveState({
+    auth: {
+      token: action.payload
+    }
+  });
+}
+
 function* initialize() {
   const state: RootState = yield select();
 
@@ -67,6 +76,7 @@ export function* authSaga() {
   yield all([
     call(initialize),
     takeEvery(getType(actions.getAuthRequest), getAuth),
-    takeEvery(getType(actions.authorizeRequest), authorize)
+    takeEvery(getType(actions.authorizeRequest), authorize),
+    takeEvery(getType(actions.authorizeSuccess), saveToken)
   ]);
 }

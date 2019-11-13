@@ -1,4 +1,5 @@
 import { ActionType, createReducer } from "typesafe-actions";
+import { getState } from "../localStorage";
 import * as actions from "./actions";
 import { AuthState } from "./types";
 
@@ -7,7 +8,8 @@ type AuthAction = ActionType<typeof actions>;
 const initialState: AuthState = {
   isAuthorized: false,
   token: "",
-  isReady: false
+  isReady: false,
+  ...getState("auth")
 };
 
 export const authReducer = createReducer<AuthState, AuthAction>(initialState)
