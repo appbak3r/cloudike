@@ -10,6 +10,9 @@ const Spinner = styled(SpinnerIcon)`
   fill: #fff;
   position: absolute;
   height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const StyledButton = styled(({ isLoading, ...props }) => <button {...props} />)`
