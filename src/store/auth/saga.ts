@@ -20,7 +20,7 @@ function* getAuth() {
     return yield put(actions.getAuthFailure());
   }
 
-  yield put(actions.getAuthSuccess());
+  yield put(actions.getAuthSuccess(data));
 }
 
 function* authorize(action: ActionType<typeof actions.authorizeRequest>) {

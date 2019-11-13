@@ -2,6 +2,7 @@ export type AuthState = {
   isAuthorized: boolean;
   token: string;
   isReady: boolean;
+  userData: UserDataPayload;
 };
 
 export enum AuthActionTypes {
@@ -16,4 +17,8 @@ export enum AuthActionTypes {
 export type AuthorizeRequestPayload = {
   login: string;
   password: string;
+};
+
+export type UserDataPayload = {
+  userid: number;
 };

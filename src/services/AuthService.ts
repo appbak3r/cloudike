@@ -15,7 +15,7 @@ type AuthorizeEmailPayload = {
 export class AuthService {
   static async getAuth() {
     try {
-      const response = await axiosClient.get(`/accounts/get/`);
+      const response = await axiosClient.get(`/api/2/accounts/get/`);
 
       return response.data;
     } catch (error) {
@@ -27,7 +27,7 @@ export class AuthService {
 
   static async authorizeWithEmail(data: AuthorizeEmailPayload) {
     try {
-      const response = await axiosClient.post("/accounts/login/", data);
+      const response = await axiosClient.post("/api/2/accounts/login/", data);
 
       return response.data;
     } catch (error) {
@@ -40,7 +40,7 @@ export class AuthService {
   static async authorizeWithPhone(data: AuthorizePhonePayload) {
     try {
       const response = await axiosClient.post(
-        "/accounts/login_by_phone/",
+        "/api/2/accounts/login_by_phone/",
         data
       );
 

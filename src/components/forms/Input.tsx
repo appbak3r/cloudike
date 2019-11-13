@@ -5,7 +5,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   label?: string | ReactElement;
 };
 
-export const Wrapper = styled.label`
+const Wrapper = styled.label`
   display: flex;
   flex-direction: column-reverse;
 `;

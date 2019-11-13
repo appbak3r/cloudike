@@ -9,7 +9,7 @@ import { RootState } from "../../store/reducer";
 import { SignInForm } from "../auth/SignInForm";
 import { Logo } from "../common/Logo";
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,8 @@ export const Wrapper = styled.div`
   padding: 15px;
   box-sizing: border-box;
 `;
-export const FormWrapper = styled.div`
+
+const FormWrapper = styled.div`
   max-width: 400px;
   width: 100%;
   position: relative;

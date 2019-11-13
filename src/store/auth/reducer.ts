@@ -9,14 +9,18 @@ const initialState: AuthState = {
   isAuthorized: false,
   token: "",
   isReady: false,
+  userData: {
+    userid: null
+  },
   ...getState("auth")
 };
 
 export const authReducer = createReducer<AuthState, AuthAction>(initialState)
-  .handleAction(actions.getAuthSuccess, state => {
+  .handleAction(actions.getAuthSuccess, (state, action) => {
     return {
       ...state,
       isAuthorized: true,
+      userData: action.payload,
       isReady: true
     };
   })
