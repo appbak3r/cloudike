@@ -18,6 +18,7 @@ export enum PhotosActionTypes {
 export type PhotoItem = {
   created: number;
   updated: number;
+  originalDate: number;
   preview: string;
   small: string;
   id: string;

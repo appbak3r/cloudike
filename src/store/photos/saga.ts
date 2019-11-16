@@ -5,17 +5,8 @@ import { PhotoService } from "../../services/PhotoService";
 import { parseLink } from "../../utils/parseLink";
 import { RootState } from "../reducer";
 import * as actions from "./actions";
+import { mapPhotoItem } from "./mappers";
 import { PhotoItem } from "./types";
-
-const mapItems = (item: any) => {
-  return {
-    id: item.id,
-    created: item.created,
-    updated: item.updated,
-    small: item._links.image_middle.href,
-    preview: item._links.image_preview.href
-  };
-};
 
 function* getPhotos(action: ActionType<typeof actions.getPhotosRequest>) {
   const data = yield PhotoService.getAll(action.payload);
@@ -25,7 +16,7 @@ function* getPhotos(action: ActionType<typeof actions.getPhotosRequest>) {
   }
 
   try {
-    const items: PhotoItem[] = data._embedded.items.map(mapItems);
+    const items: PhotoItem[] = data._embedded.items.map(mapPhotoItem);
 
     yield put(
       actions.getPhotosRequestSuccess({
@@ -49,7 +40,7 @@ function* getMorePhotos() {
   try {
     const { data } = yield axiosClient.get(next);
 
-    const items: PhotoItem[] = data._embedded.items.map(mapItems);
+    const items: PhotoItem[] = data._embedded.items.map(mapPhotoItem);
 
     yield put(
       actions.getMorePhotosRequestSuccess({

@@ -1,19 +1,10 @@
 import React, { ButtonHTMLAttributes, FC, memo } from "react";
 import styled, { css } from "styled-components";
-import { ReactComponent as SpinnerIcon } from "../../assets/icons/spinner.svg";
+import { Spinner } from "./Spinner";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean;
 };
-
-const Spinner = styled(SpinnerIcon)`
-  fill: #fff;
-  position: absolute;
-  height: 80%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
 
 const StyledButton = styled(({ isLoading, ...props }) => <button {...props} />)`
   background-color: #407be2;

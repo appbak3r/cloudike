@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
+import { Route } from "react-router-dom";
 import { AuthState } from "../../store/auth/types";
 import { RootState } from "../../store/reducer";
 import { Photos } from "../photos/Photos";
+import { Photo } from "./Photo";
 
 type StateProps = AuthState;
 type OwnProps = {};
@@ -12,9 +14,11 @@ const mapStateToProps = (state: RootState): StateProps => state.auth;
 
 const EnhancedDashboard: FC<Props> = ({ userData }) => {
   return (
-    <div>
+    <>
       <Photos userId={userData.userid} />
-    </div>
+
+      <Route path="/photos/:userId/:id" component={Photo} />
+    </>
   );
 };
 
