@@ -1,5 +1,6 @@
 {
   "name": "cloudike",
+  "homepage": "https://appbak3r.github.io/cloudike",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { Store } from "redux";
 import { GlobalStyles } from "./assets/styles/GlobalStyles";
 import { PrivateRoute } from "./components/common/PrivateRoute";
@@ -16,7 +16,7 @@ export const App: FC<Props> = ({ store }) => {
   return (
     <TabMode>
       <Provider store={store}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route path="/login" component={Login} />
             <PrivateRoute path="/" component={Dashboard} />
