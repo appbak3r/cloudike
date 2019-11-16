@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import { AuthState } from "../../store/auth/types";
@@ -12,7 +12,7 @@ type Props = OwnProps & StateProps;
 
 const mapStateToProps = (state: RootState): StateProps => state.auth;
 
-const EnhancedDashboard: FC<Props> = ({ userData }) => {
+const EnhancedDashboard: FC<Props> = memo(({ userData }) => {
   return (
     <>
       <Photos userId={userData.userid} />
@@ -20,7 +20,7 @@ const EnhancedDashboard: FC<Props> = ({ userData }) => {
       <Route path="/photos/:userId/:id" component={Photo} />
     </>
   );
-};
+});
 
 export const Dashboard = connect(mapStateToProps)(EnhancedDashboard) as FC<
   OwnProps

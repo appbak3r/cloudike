@@ -1,5 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
+import { Spinner } from "./Spinner";
 
-export const Loading: FC = () => {
-  return <div>loading...</div>;
-};
+export const Loading: FC = memo(() => {
+  return (
+    <div>
+      <Spinner />
+    </div>
+  );
+});

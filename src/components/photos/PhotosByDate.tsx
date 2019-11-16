@@ -1,5 +1,5 @@
 import groupBy from "lodash.groupby";
-import React, { FC } from "react";
+import React, { FC, memo, useMemo } from "react";
 import styled from "styled-components";
 import { PhotoItem } from "../../store/photos/types";
 import { SquareGrid } from "../common/SquareGrid";
@@ -19,10 +19,14 @@ const Header = styled.div`
   padding: 15px 20px;
 `;
 
-export const PhotosByDate: FC<Props> = ({ photos }) => {
-  const groupedPhotos = groupBy(photos, photo => {
-    return new Date(photo.originalDate).toLocaleDateString();
-  });
+export const PhotosByDate: FC<Props> = memo(({ photos }) => {
+  const groupedPhotos = useMemo(
+    () =>
+      groupBy(photos, photo => {
+        return new Date(photo.originalDate).toLocaleDateString();
+      }),
+    [photos]
+  );
 
   return (
     <>
@@ -41,4 +45,4 @@ export const PhotosByDate: FC<Props> = ({ photos }) => {
       })}
     </>
   );
-};
+});

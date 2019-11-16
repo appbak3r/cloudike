@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
@@ -53,7 +53,7 @@ const mapStateToProps = (state: RootState): StateProps => {
   return state.auth;
 };
 
-const EnhancedLogin: FC<Props> = ({ authorize, isAuthorized }) => {
+const EnhancedLogin: FC<Props> = memo(({ authorize, isAuthorized }) => {
   if (isAuthorized) {
     return <Redirect to="/" />;
   }
@@ -67,7 +67,7 @@ const EnhancedLogin: FC<Props> = ({ authorize, isAuthorized }) => {
       </FormWrapper>
     </Wrapper>
   );
-};
+});
 
 export const Login: FC<OwnProps> = connect(
   mapStateToProps,

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { PhotoItem } from "../../store/photos/types";
@@ -18,7 +18,7 @@ const StyledLink = styled(({ image, ...props }) => <Link {...props} />)`
   background-image: url("${props => props.image}");
 `;
 
-export const PhotoPreview: FC<Props> = ({ photo, className }) => {
+export const PhotoPreview: FC<Props> = memo(({ photo, className }) => {
   const { id, small } = photo;
 
   return (
@@ -32,4 +32,4 @@ export const PhotoPreview: FC<Props> = ({ photo, className }) => {
       )}
     </PhotosContext.Consumer>
   );
-};
+});

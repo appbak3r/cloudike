@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, memo, useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import {
@@ -36,26 +36,21 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
 export const PhotosContext = React.createContext(0);
 
-const EnhancedPhotos: FC<Props> = ({
-  getPhotos,
-  userId,
-  next,
-  loading,
-  items,
-  getMorePhotos
-}) => {
-  useEffect(() => {
-    getPhotos(userId);
-  }, [getPhotos, userId]);
+const EnhancedPhotos: FC<Props> = memo(
+  ({ getPhotos, userId, next, loading, items, getMorePhotos }) => {
+    useEffect(() => {
+      getPhotos(userId);
+    }, [getPhotos, userId]);
 
-  return (
-    <PhotosContext.Provider value={userId}>
-      <InfiniteScroll hasMore={!loading && !!next} onLoadMore={getMorePhotos}>
-        <PhotosByDate photos={items} />
-      </InfiniteScroll>
-    </PhotosContext.Provider>
-  );
-};
+    return (
+      <PhotosContext.Provider value={userId}>
+        <InfiniteScroll hasMore={!loading && !!next} onLoadMore={getMorePhotos}>
+          <PhotosByDate photos={items} />
+        </InfiniteScroll>
+      </PhotosContext.Provider>
+    );
+  }
+);
 
 export const Photos: FC<OwnProps> = connect(
   mapStateToProps,

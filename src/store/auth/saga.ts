@@ -56,12 +56,14 @@ function* authorize(action: ActionType<typeof actions.authorizeRequest>) {
   return yield put(actions.authorizeSuccess(data.token));
 }
 
-function saveToken(action: ActionType<typeof actions.authorizeSuccess>) {
+function* saveToken(action: ActionType<typeof actions.authorizeSuccess>) {
   saveState({
     auth: {
       token: action.payload
     }
   });
+
+  yield initialize();
 }
 
 function* initialize() {

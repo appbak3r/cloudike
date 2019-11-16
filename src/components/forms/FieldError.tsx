@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import styled, { css } from "styled-components";
 import { Label as TextLabel, StyledInput as TextInput } from "./Input";
 
@@ -31,7 +31,7 @@ const Error = styled.div`
   font-size: 0.8rem;
 `;
 
-export const FieldError: FC<Props> = ({ error, hasError, children }) => {
+export const FieldError: FC<Props> = memo(({ error, hasError, children }) => {
   return (
     <Wrapper hasError={hasError}>
       {hasError && <Error>{error}</Error>}
@@ -39,4 +39,4 @@ export const FieldError: FC<Props> = ({ error, hasError, children }) => {
       {children}
     </Wrapper>
   );
-};
+});

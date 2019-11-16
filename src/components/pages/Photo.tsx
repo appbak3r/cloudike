@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, memo, useCallback, useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { PhotoService } from "../../services/PhotoService";
 import { mapPhotoItem } from "../../store/photos/mappers";
@@ -10,7 +10,7 @@ type Props = {} & RouteComponentProps<{
   userId: string;
 }>;
 
-export const Photo: FC<Props> = ({ match, history }) => {
+export const Photo: FC<Props> = memo(({ match, history }) => {
   const onClose = useCallback(() => {
     history.push("/");
   }, [history]);
@@ -30,4 +30,4 @@ export const Photo: FC<Props> = ({ match, history }) => {
   }, [id, userId, onClose]);
 
   return <PhotoModal photo={photo} onClose={onClose} />;
-};
+});
