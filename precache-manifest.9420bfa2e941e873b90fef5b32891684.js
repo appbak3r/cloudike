@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1976180efffad5b62dd8dec5dfdfedf4",
+    "revision": "96445ab6067c438bdc2443be83bad4ad",
     "url": "/cloudike/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cloudike/static/js/2.f551fadd.chunk.js"
   },
   {
-    "revision": "3fea08521de879c82f8f",
-    "url": "/cloudike/static/js/main.d93f2e72.chunk.js"
+    "revision": "d76cff22f29c08d59921",
+    "url": "/cloudike/static/js/main.ffd0aa42.chunk.js"
   },
   {
     "revision": "a07b4170501bfc7b8b52",
