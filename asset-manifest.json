@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/cloudike/static/js/main.ffd0aa42.chunk.js",
-    "main.js.map": "/cloudike/static/js/main.ffd0aa42.chunk.js.map",
+    "main.js": "/cloudike/static/js/main.5bee85e1.chunk.js",
+    "main.js.map": "/cloudike/static/js/main.5bee85e1.chunk.js.map",
     "runtime-main.js": "/cloudike/static/js/runtime-main.c9e16aa4.js",
     "runtime-main.js.map": "/cloudike/static/js/runtime-main.c9e16aa4.js.map",
-    "static/js/2.f551fadd.chunk.js": "/cloudike/static/js/2.f551fadd.chunk.js",
-    "static/js/2.f551fadd.chunk.js.map": "/cloudike/static/js/2.f551fadd.chunk.js.map",
+    "static/js/2.8ab1d13a.chunk.js": "/cloudike/static/js/2.8ab1d13a.chunk.js",
+    "static/js/2.8ab1d13a.chunk.js.map": "/cloudike/static/js/2.8ab1d13a.chunk.js.map",
     "index.html": "/cloudike/index.html",
-    "precache-manifest.9420bfa2e941e873b90fef5b32891684.js": "/cloudike/precache-manifest.9420bfa2e941e873b90fef5b32891684.js",
+    "precache-manifest.bf953e85b89935b6229affb81d862635.js": "/cloudike/precache-manifest.bf953e85b89935b6229affb81d862635.js",
     "service-worker.js": "/cloudike/service-worker.js",
     "static/media/logo.64559e04.svg": "/cloudike/static/media/logo.64559e04.svg",
     "static/media/spinner.97c55415.svg": "/cloudike/static/media/spinner.97c55415.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c9e16aa4.js",
-    "static/js/2.f551fadd.chunk.js",
-    "static/js/main.ffd0aa42.chunk.js"
+    "static/js/2.8ab1d13a.chunk.js",
+    "static/js/main.5bee85e1.chunk.js"
   ]
 }
