@@ -16,7 +16,7 @@ export const App: FC<Props> = ({ store }) => {
   return (
     <TabMode>
       <Provider store={store}>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           <Switch>
             <Route path="/login" component={Login} />
             <PrivateRoute path="/" component={Dashboard} />
