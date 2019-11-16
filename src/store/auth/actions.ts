@@ -22,3 +22,5 @@ export const authorizeSuccess = createAction(AuthActionTypes.AUTHORIZE_SUCCESS)<
 export const authorizeFailure = createAction(
   AuthActionTypes.AUTHORIZE_FAILURE
 )();
+
+export const logout = createAction(AuthActionTypes.LOGOUT)();

@@ -8,6 +8,7 @@ import {
 import { PhotosState } from "../../store/photos/types";
 import { RootState } from "../../store/reducer";
 import { InfiniteScroll } from "../common/InfiniteScroll";
+import { Spinner, SpinnerSize } from "../common/Spinner";
 import { PhotosByDate } from "./PhotosByDate";
 
 type OwnProps = {
@@ -37,13 +38,17 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 export const PhotosContext = React.createContext(0);
 
 const EnhancedPhotos: FC<Props> = memo(
-  ({ getPhotos, userId, next, loading, items, getMorePhotos }) => {
+  ({ getPhotos, userId, next, loading, loaded, items, getMorePhotos }) => {
     useEffect(() => {
       getPhotos(userId);
     }, [getPhotos, userId]);
 
     return (
       <PhotosContext.Provider value={userId}>
+        {loading && !loaded && (
+          <Spinner alternative={true} size={SpinnerSize.SMALL} />
+        )}
+
         <InfiniteScroll hasMore={!loading && !!next} onLoadMore={getMorePhotos}>
           <PhotosByDate photos={items} />
         </InfiniteScroll>

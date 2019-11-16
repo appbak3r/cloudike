@@ -1,3 +1,6 @@
+import { ActionType } from "typesafe-actions";
+import { logout } from "./actions";
+
 export type AuthState = {
   isAuthorized: boolean;
   token: string;
@@ -11,7 +14,8 @@ export enum AuthActionTypes {
   GET_AUTH_FAILURE = "@@auth/get-auth/failure",
   AUTHORIZE_REQUEST = "@@auth/authorize/request",
   AUTHORIZE_SUCCESS = "@@auth/authorize/success",
-  AUTHORIZE_FAILURE = "@@auth/authorize/failure"
+  AUTHORIZE_FAILURE = "@@auth/authorize/failure",
+  LOGOUT = "@@auth/logout"
 }
 
 export type AuthorizeRequestPayload = {
@@ -22,3 +26,5 @@ export type AuthorizeRequestPayload = {
 export type UserDataPayload = {
   userid: number;
 };
+
+export type LogoutActionType = ActionType<typeof logout>;

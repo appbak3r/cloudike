@@ -56,14 +56,20 @@ function* authorize(action: ActionType<typeof actions.authorizeRequest>) {
   return yield put(actions.authorizeSuccess(data.token));
 }
 
-function* saveToken(action: ActionType<typeof actions.authorizeSuccess>) {
+function saveToken(action: ActionType<typeof actions.authorizeSuccess>) {
   saveState({
     auth: {
       token: action.payload
     }
   });
+}
 
-  yield initialize();
+function removeToken() {
+  saveState({
+    auth: {
+      token: ""
+    }
+  });
 }
 
 function* initialize() {
@@ -79,6 +85,9 @@ export function* authSaga() {
     call(initialize),
     takeEvery(getType(actions.getAuthRequest), getAuth),
     takeEvery(getType(actions.authorizeRequest), authorize),
-    takeEvery(getType(actions.authorizeSuccess), saveToken)
+    takeEvery(getType(actions.authorizeSuccess), saveToken),
+    takeEvery(getType(actions.authorizeSuccess), initialize),
+    takeEvery(getType(actions.logout), removeToken),
+    takeEvery(getType(actions.logout), initialize)
   ]);
 }

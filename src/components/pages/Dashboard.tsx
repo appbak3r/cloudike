@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import { AuthState } from "../../store/auth/types";
 import { RootState } from "../../store/reducer";
+import { LogoutButton } from "../auth/LogoutButton";
 import { Photos } from "../photos/Photos";
 import { Photo } from "./Photo";
 
@@ -15,6 +16,7 @@ const mapStateToProps = (state: RootState): StateProps => state.auth;
 const EnhancedDashboard: FC<Props> = memo(({ userData }) => {
   return (
     <>
+      <LogoutButton />
       <Photos userId={userData.userid} />
 
       <Route path="/photos/:userId/:id" component={Photo} />

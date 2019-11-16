@@ -5,17 +5,24 @@ import { AuthState } from "./types";
 
 type AuthAction = ActionType<typeof actions>;
 
-const initialState: AuthState = {
+const clearState: AuthState = {
   isAuthorized: false,
   token: "",
   isReady: false,
   userData: {
-    userid: null
-  },
+    userid: -1
+  }
+};
+
+const initialState: AuthState = {
+  ...clearState,
   ...getState("auth")
 };
 
 export const authReducer = createReducer<AuthState, AuthAction>(initialState)
+  .handleAction(actions.logout, () => {
+    return clearState;
+  })
   .handleAction(actions.getAuthSuccess, (state, action) => {
     return {
       ...state,

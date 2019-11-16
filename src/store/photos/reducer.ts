@@ -1,4 +1,6 @@
 import { ActionType, createReducer } from "typesafe-actions";
+import { logout } from "../auth/actions";
+import { LogoutActionType } from "../auth/types";
 import * as actions from "./actions";
 import { PhotosState } from "./types";
 
@@ -11,9 +13,13 @@ const initialState: PhotosState = {
   items: []
 };
 
-export const photosReducer = createReducer<PhotosState, PhotosAction>(
-  initialState
-)
+export const photosReducer = createReducer<
+  PhotosState,
+  PhotosAction | LogoutActionType
+>(initialState)
+  .handleAction(logout, () => {
+    return initialState;
+  })
   .handleAction(actions.getPhotosRequest, state => {
     return {
       ...state,
