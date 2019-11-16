@@ -1,7 +1,7 @@
 import React, { FC, memo, useCallback, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { PhotoItem } from "../../store/photos/types";
-import { Spinner } from "../common/Spinner";
+import { Spinner, SpinnerSize } from "../common/Spinner";
 
 type Props = {
   photo: PhotoItem | null;
@@ -63,7 +63,7 @@ export const PhotoModal: FC<Props> = memo(({ photo, onClose }) => {
   return (
     <Wrapper>
       <Background onClick={onClose} />
-      {(!photo || !isLoaded) && <Spinner />}
+      {(!photo || !isLoaded) && <Spinner size={SpinnerSize.SMALL} />}
       {photo && (
         <Content src={photo.preview} loading={!isLoaded} onLoad={onImageLoad} />
       )}
